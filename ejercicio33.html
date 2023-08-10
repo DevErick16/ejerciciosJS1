@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+    <form name="calculadora">
+        Primer número: <input type="text" name="valor1"><br>
+        Segundo número: <input type="text" name="valor2"><br>
+        <input type="button" name="button1" value="sumar" onclick="sumar()">
+        <input type="button" name="button2" value="restar" onclick="restar()">
+        <input type="button" name="button3" value="multiplicar" onclick="multiplicar()">
+        <input type="button" name="button4" value="dividir" onclick="dividir()"><br>
+        Resultado <input type="text" name="resultado">
+    </form>
+
+    <script>
+        function obtenerDatos(){
+            let num1 = parseInt(document.calculadora.valor1.value);
+            let num2 = parseInt(document.calculadora.valor2.value);
+            return {num1 , num2};
+        }
+        function sumar(){
+            let valores = obtenerDatos();
+            let resSuma = valores.num1 + valores.num2;
+            document.calculadora.resultado.value = resSuma; 
+        }
+        function restar(){
+            let valores= obtenerDatos();
+            let resResta= valores.num1 - valores.num2;
+            document.calculadora.resultado.value = resResta; 
+        }
+        function multiplicar(){
+            let valores= obtenerDatos();
+            let resMulti= valores.num1 * valores.num2;
+            document.calculadora.resultado.value = resMulti; 
+        }
+        function dividir(){
+            let valores= obtenerDatos();
+            let resDividir= valores.num1 / valores.num2;
+            document.calculadora.resultado.value = resDividir; 
+        }
+    </script>
+</body>
+</html>

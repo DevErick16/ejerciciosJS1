@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function entraData(){
+            let txtEntrada = document.getElementById("txtTemperatura");
+            let temp  = parseInt(txtEntrada.value);
+            return temp;
+        }
+        function escData(nomZona, text){
+            document.getElementById(nomZona).innerHTML= text;
+        }
+        function toFahrenheit(){
+            let temp = entraData();
+            temp = ((1.8)*temp+32);
+            escData('zona1', temp + 'ºF');
+            fraseRelativa(temp);
+        }
+        function toCelsius(){
+            let temp = entraData();
+            let temp2 = ((temp-32)/1.8);
+            escData('zona1', temp2 + "ºC");
+            fraseRelativa(temp2);
+        }
+        function fraseRelativa(temperatura){
+            let cadena = "-";
+            if((temperatura >= 1) && (temperatura<32))
+            cadena = "Temperatura baja";
+            if ((temperatura >= 32) && (temperatura < 68)) 
+            cadena ="Temperatura adecuada";  
+            if ((temperatura >= 68) && (temperatura <= 96)) 
+            cadena ="Temperatura alta";
+            if (cadena=="-") cadena = "Temperatura desconocida";  
+            escData('zona2', cadena);
+
+        }
+    </script>
+</head>
+<body>
+    <h2>Conversor Temperatura</h2>
+    ingresa temperatura: <input type="text" name="txtTemperatura" id="txtTemperatura">
+    <input type="button" name="btnToFahrenheit" value="Pasar a Fahrenheit" onclick="toFahrenheit()">
+    <input type="button" name="btnToCelsius" value="Pasar a Celsius" onclick="toCelsius()"><br>
+    <div id="zona1"></div>
+    <div id="zona2"></div>
+    <div id="zona3"></div>
+</body>
+</html>
